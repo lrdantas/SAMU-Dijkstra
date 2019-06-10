@@ -18,8 +18,9 @@ public class Dijkstra {
     
     private Object[] antecessores;
     private Object[] dists;
-    private List nuvem = new ArrayList();
+    private List nuvem;
     private int size;
+    private List espaco_vertices;
 
     private Grafo grafo_custo;
 
@@ -44,22 +45,27 @@ public class Dijkstra {
         Vertice w = v;
         int value_a = 0;
         int value_b = 0;
-        List vertices = grafo_custo.getVertices();
-        this.size = vertices.size();
+        this.espaco_vertices = new ArrayList();
+        this.nuvem = new ArrayList();
+        grafo_custo.getVertices().forEach((vertice) -> {
+            this.espaco_vertices.add(vertice);
+        });
+
+        this.size = this.espaco_vertices.size();
         int dw = 0;
         Object[][] grafo = grafo_custo.getGrafo_custo();
-        while(!vertices.isEmpty()){
+        while(!this.espaco_vertices.isEmpty()){
             if(nuvem.isEmpty()){
                 for(int i = 0 ; i < this.size; i++){
                     this.antecessores[i] = w.getValue();
                     this.dists[i] = grafo[w.getKey()][i];                  
                 }
-                vertices.remove(w);
+                this.espaco_vertices.remove(w);
                 nuvem.add(w);
             }
             
             else{
-                Iterator iterator = vertices.iterator();
+                Iterator iterator = this.espaco_vertices.iterator();
                 while(iterator.hasNext()){
                     ant = (Vertice) iterator.next();
                     value_a = (int) this.dists[ant.getKey()];
@@ -71,9 +77,9 @@ public class Dijkstra {
          
                 }
                
-                w = min(vertices); 
+                w = min(this.espaco_vertices); 
                 dw = (int) this.dists[w.getKey()];
-                vertices.remove(w);
+                this.espaco_vertices.remove(w);
                 nuvem.add(w);
            
             }
@@ -90,7 +96,7 @@ public class Dijkstra {
             value_d = (int) dists[v_temp.getKey()];
             if(value_d < value){
                 value = value_d;
-                v_return = (Vertice) grafo_custo.getVertices().get(i);
+                v_return = (Vertice) this.espaco_vertices.get(i);
             }
         }
         return v_return;

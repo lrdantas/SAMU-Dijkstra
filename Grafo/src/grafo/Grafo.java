@@ -19,7 +19,7 @@ public class Grafo {
     private int index_v = 0;
     private int index_a = 0;
     private int index_b = 0;
-    private List vertices = new ArrayList();
+    private final List vertices = new ArrayList();
     
     private final int inf = Integer.MAX_VALUE /2;
 

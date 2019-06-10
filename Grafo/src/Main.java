@@ -33,6 +33,8 @@ public class Main {
         arquivo = new LerArquivo("arestas");
         arquivo.run();
         List lista_arestas = arquivo.getLista();
+        
+        //Variaveis de controle:
         Vertice v;
         Aresta a;
         String linha;
@@ -72,29 +74,45 @@ public class Main {
               grafo.inserir_aresta(a);
          }
          
-         //grafo.print();
-         
          Dijkstra dijkstra = new Dijkstra(grafo);
          
          Object[] vertices = grafo.getVertices().toArray();
          
          
          int peso;
+         int resultado = 100000000;
+         Vertice escolhido = null;
          Object[] dist;
          String valor;
          
          //Rodando dijkstra
          for(int i = 0; i < vertices.length; i++){  
              peso = 0;
-             dijkstra.dijkstra((Vertice) vertices[i]);
+             Vertice vert = (Vertice) vertices[i];
+             dijkstra.dijkstra(vert);
              dist = dijkstra.getDists();
-              for (Object dist1 : dist) {
-                  valor = dist1.toString();
+   
+              for (Object d : dist) {
+                  valor = d.toString();
                   //System.out.println(valor);
+                  //if(Integer.parseInt(valor) > peso)
+                  
                   peso = peso + Integer.parseInt(valor);
               }
-             System.out.println("vertice " + i + " com peso: " + peso);
+             System.out.println(vert.getValue() + " com peso médio: " + peso/dist.length);
+             if(resultado > peso/dist.length){
+                 resultado = peso/dist.length;
+                 escolhido = vert;
+             }
          }
+         
+         //print resultado
+         System.out.println("----------------------------------------------------------------------");
+         System.out.println("---------------------------Resultado----------------------------------");
+         System.out.println("Ambulância deverá está posicionada no vertice: " + escolhido.getValue());
+         System.out.println("Latitude: " + escolhido.getLatitude());
+         System.out.println("Longitude: " + escolhido.getLatitude());
+         System.out.println("----------------------------------------------------------------------");
 
         
     }
