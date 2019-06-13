@@ -1,19 +1,9 @@
 package grafo;
 
-import java.util.*;
-import java.lang.*;
-import java.io.*;
-
 class DistanceCalculator
 {
-	public static void main (String[] args) throws java.lang.Exception
-	{
-		System.out.println(distance(32.9697, -96.80322, 29.46786, -98.53506, "M") + " Miles\n");
-		System.out.println(distance(32.9697, -96.80322, 29.46786, -98.53506, "K") + " Kilometers\n");
-		System.out.println(distance(32.9697, -96.80322, 29.46786, -98.53506, "N") + " Nautical Miles\n");
-	}
 
-	private static double distance(double lat1, double lon1, double lat2, double lon2, String unit) {
+	public static double distance(double lat1, double lon1, double lat2, double lon2, String unit) {
 		if ((lat1 == lat2) && (lon1 == lon2)) {
 			return 0;
 		}
