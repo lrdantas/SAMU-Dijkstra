@@ -45,8 +45,7 @@ public class LerArquivo {
         abrirArquivo(entrada);
         while (this.x.hasNext()) {
            num_vertices++;
-           this.lista.add(this.x.nextLine());
-     
+           this.lista.add(this.x.nextLine()); 
         }
     }
     
