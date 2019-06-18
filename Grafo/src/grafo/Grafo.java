@@ -21,7 +21,7 @@ public class Grafo {
     private int index_b = 0;
     private final List vertices = new ArrayList();
     
-    private final int inf = Integer.MAX_VALUE /2;
+    private final int inf = Integer.MAX_VALUE /1000;
 
     public Grafo(int m) {
         this.m = m;

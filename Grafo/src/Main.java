@@ -111,7 +111,7 @@ public class Main {
          System.out.println("---------------------------Resultado----------------------------------");
          System.out.println("Ambulância deverá está posicionada no vertice: " + escolhido.getValue());
          System.out.println("Latitude: " + escolhido.getLatitude());
-         System.out.println("Longitude: " + escolhido.getLatitude());
+         System.out.println("Longitude: " + escolhido.getLongitude());
          System.out.println("----------------------------------------------------------------------");
 
         
