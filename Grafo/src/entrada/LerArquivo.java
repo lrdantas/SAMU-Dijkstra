@@ -19,7 +19,7 @@ public class LerArquivo {
     
     private Scanner x;
     private String entrada;
-    private final String caminho = "src/entrada/" + entrada;
+    private final String caminho = "src/entrada/";
     private int num_vertices = 0;
    
     private List lista = new ArrayList();
@@ -31,7 +31,7 @@ public class LerArquivo {
     public void abrirArquivo(String entrada){
         
         try {
-            x = new Scanner(new File("src/entrada/" + entrada));
+            x = new Scanner(new File(caminho + entrada));
         } catch (Exception e) {
             System.out.println("Arquivo não encontrado");
         }
