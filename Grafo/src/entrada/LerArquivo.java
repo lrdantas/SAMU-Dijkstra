@@ -19,7 +19,7 @@ public class LerArquivo {
     
     private Scanner x;
     private String entrada;
-    private final String caminho = "src/entrada/";
+    private final String caminho = "Grafo/src/entrada/";
     private int num_vertices = 0;
    
     private List lista = new ArrayList();
