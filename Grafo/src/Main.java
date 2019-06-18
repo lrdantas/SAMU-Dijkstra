@@ -14,7 +14,6 @@ import grafo.Aresta;
 import grafo.Dijkstra;
 import grafo.Grafo;
 import grafo.Vertice;
-import java.util.Iterator;
 import java.util.List;
 
 public class Main {
@@ -22,10 +21,9 @@ public class Main {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) throws java.lang.Exception {
+    public static void main(String[] args) {
+          Grafo grafo;
         
-    	Grafo grafo;
-    	
         LerArquivo arquivo = new LerArquivo("vertices");
         arquivo.run();
         List lista_vertices = arquivo.getLista();
@@ -112,7 +110,7 @@ public class Main {
          System.out.println("---------------------------Resultado----------------------------------");
          System.out.println("Ambulância deverá está posicionada no vertice: " + escolhido.getValue());
          System.out.println("Latitude: " + escolhido.getLatitude());
-         System.out.println("Longitude: " + escolhido.getLatitude());
+         System.out.println("Longitude: " + escolhido.getLongitude());
          System.out.println("----------------------------------------------------------------------");
 
         
