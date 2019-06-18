@@ -31,6 +31,9 @@ public class LerArquivo {
     public void abrirArquivo(String entrada){
         
         try {
+        	/**
+        	 * entrada se refere ao arquivo arestas ou vertices
+        	 */
             x = new Scanner(new File("src/entrada/" + entrada));
         } catch (Exception e) {
             System.out.println("Arquivo não encontrado");
@@ -42,8 +45,7 @@ public class LerArquivo {
         abrirArquivo(entrada);
         while (this.x.hasNext()) {
            num_vertices++;
-           this.lista.add(this.x.nextLine());
-     
+           this.lista.add(this.x.nextLine()); 
         }
     }
     

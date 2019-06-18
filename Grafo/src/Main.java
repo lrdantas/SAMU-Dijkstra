@@ -22,9 +22,10 @@ public class Main {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
-          Grafo grafo;
+    public static void main(String[] args) throws java.lang.Exception {
         
+    	Grafo grafo;
+    	
         LerArquivo arquivo = new LerArquivo("vertices");
         arquivo.run();
         List lista_vertices = arquivo.getLista();
