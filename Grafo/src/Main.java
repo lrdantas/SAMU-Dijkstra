@@ -14,6 +14,8 @@ import grafo.Aresta;
 import grafo.Dijkstra;
 import grafo.Grafo;
 import grafo.Vertice;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class Main {
@@ -79,10 +81,16 @@ public class Main {
          
          
          int peso;
+         int mediana= 0;
+         int media = 0;
+         int med_a;
+         int med_b ;
          int resultado = 100000000;
          Vertice escolhido = null;
-         Object[] dist;
+         Object[] dist = null;
          String valor;
+         List listaOrd = null;
+         
          
          //Rodando dijkstra
          for(int i = 0; i < vertices.length; i++){  
@@ -90,17 +98,30 @@ public class Main {
              Vertice vert = (Vertice) vertices[i];
              dijkstra.dijkstra(vert);
              dist = dijkstra.getDists();
-   
+             
+             //cálculo da mediana;
+             listaOrd = Arrays.asList(dist);
+             Collections.sort(listaOrd);
+             if(dist.length%2 != 0){              
+                 mediana = (int) listaOrd.get(dist.length/2);
+             }
+             else{
+                 med_a = (int) listaOrd.get(dist.length/2);
+                 med_b = (int) listaOrd.get((dist.length/2)-1);
+                 mediana = (med_a+med_b)/2;
+             }
+             System.out.println(vert.getValue() + " com mediana: " + mediana);
+              
+              //cálculo da média;
               for (Object d : dist) {
                   valor = d.toString();
-                  //System.out.println(valor);
-                  //if(Integer.parseInt(valor) > peso)
-                  
+
                   peso = peso + Integer.parseInt(valor);
-              }
-             System.out.println(vert.getValue() + " com peso médio: " + peso/dist.length);
-             if(resultado > peso/dist.length){
-                 resultado = peso/dist.length;
+                  media = peso/dist.length;
+              }             
+             System.out.println(vert.getValue() + " com peso médio: " + media);
+             if(resultado > mediana){
+                 resultado = mediana;
                  escolhido = vert;
              }
          }
